@@ -5,10 +5,40 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <div id="header">
+        <h1>Julie Anne Moore</h1>
+
+        <nav>
+          <%= link_to "HOME", root_path %>
+        </nav>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <div id="footer" >
+        <p>&#169;2016 by Julie Anne Moore. Site proudly designed by Julie Anne Moore.</p>
+        <div>
+          <a class="btn btn-social-icon btn-flickr" href="http://www.flickr.com/photos/29878460@N07/">
+            <i class="fa fa-flickr"></i>
+          </a>
+          <a class="btn btn-social-icon btn-instagram" href="http://www.instagram.com/jamoore20/">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/Infinity.Pet.Photography/">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a class="btn btn-social-icon btn-deviantart" href="http://landofstandardbreds.deviantart.com/">
+            <i class="fa fa-deviantart"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
