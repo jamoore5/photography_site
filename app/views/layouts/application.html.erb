@@ -16,6 +16,9 @@
 
         <nav>
           <%= link_to "HOME", root_path %>
+          <% @categories.each do |category| %>
+              <%= link_to category.name.upcase, category_path(category) %>
+          <% end %>
         </nav>
       </div>
       <div id="content">
