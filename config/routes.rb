@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :categories
+  resources :categories do
+    resources :galleries
+  end
 
   root 'welcome#index'
 

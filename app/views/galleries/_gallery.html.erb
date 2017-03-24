@@ -1,0 +1,6 @@
+ <li>
+    <%= gallery.name %>
+    <%= link_to 'Show', category_gallery_path(gallery.category, gallery) %>
+    <%= link_to 'Edit', edit_category_gallery_path(gallery.category, gallery) %>
+    <%= link_to 'Delete', [gallery.category, gallery], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>

@@ -17,7 +17,14 @@
         <nav>
           <%= link_to "HOME", root_path %>
           <% @categories.each do |category| %>
-              <%= link_to category.name.upcase, category_path(category) %>
+            <div class="dropdown">
+              <%= link_to category.name.upcase, category_path(category), :class=>'dropbtn' %>
+              <div class="dropdown-content">
+                <% category.galleries.each do |gallery| %>
+                    <%= link_to gallery.name.upcase, category_gallery_path(gallery.category, gallery) %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </nav>
       </div>

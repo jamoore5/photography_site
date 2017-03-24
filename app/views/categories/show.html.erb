@@ -3,5 +3,11 @@
   <%= @category.name %>
 </p>
 
+<h2>Galleries:</h2>
+<ul>
+  <%= render @category.galleries %>
+</ul>
+
+<%= link_to 'New Gallery', new_category_gallery_path(@category) %> |
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
