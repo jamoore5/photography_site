@@ -1,6 +1,7 @@
 class Gallery < ApplicationRecord
   belongs_to :category
   default_scope { order(order_idx: :asc) }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   def self.max_order_idx(category_id)
     Gallery.where(category_id: category_id).maximum('order_idx')
