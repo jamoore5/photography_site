@@ -3,4 +3,12 @@
   <%= @gallery.name %>
 </p>
 
+<div id='gallery'>
+  <% @gallery.photos.each do |photo| %>
+    <%= image_tag photo.image.url(:medium) %><br>
+      <h3><%= photo.caption %></h3>
+  <% end %>
+</div>
+
+<%= link_to 'Add Photo', new_category_gallery_photo_path(@gallery.category, @gallery)  %>
 <%= link_to 'Back', category_path(@category) %>

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 
   resources :categories do
-    resources :galleries
+    resources :galleries do
+      resources :photos
+    end
   end
 
   get 'welcome/index'

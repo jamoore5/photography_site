@@ -1,5 +1,6 @@
 class Gallery < ApplicationRecord
   belongs_to :category
+  has_many :photos, dependent: :destroy
   default_scope { order(order_idx: :asc) }
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
