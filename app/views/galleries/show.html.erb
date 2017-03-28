@@ -1,14 +1,23 @@
-<p>
-  <strong> Name:</strong>
-  <%= @gallery.name %>
-</p>
-
 <div id='gallery'>
+  <%= link_to 'Add Photo', new_category_gallery_photo_path(@gallery.category, @gallery)  %>
+  <%= link_to 'Back', category_path(@gallery.category) %>
+
+  <p>
+    <strong> Name:</strong>
+    <%= @gallery.name %>
+  </p>
+
   <% @gallery.photos.each do |photo| %>
-    <%= image_tag photo.image.url(:medium) %><br>
-      <h3><%= photo.caption %></h3>
+      <div id="caption">
+        <% if photo.public %>
+            *
+        <% end %>
+        <%= photo.caption %>
+        <%= link_to 'Edit', edit_category_gallery_photo_path(@category, @gallery, photo) %>
+        <%= link_to 'Delete', category_gallery_photo_path(@category, @gallery, photo),
+                    method: :delete,
+                    data: {confirm: 'Ary you sure'} %>
+      </div>
+      <%= image_tag photo.image.url(:medium) %>
   <% end %>
 </div>
-
-<%= link_to 'Add Photo', new_category_gallery_photo_path(@gallery.category, @gallery)  %>
-<%= link_to 'Back', category_path(@category) %>
