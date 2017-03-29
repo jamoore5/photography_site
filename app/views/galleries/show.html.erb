@@ -1,7 +1,7 @@
-<div id='gallery'>
-  <%= link_to 'Add Photo', new_category_gallery_photo_path(@gallery.category, @gallery)  %>
-  <%= link_to 'Back', category_path(@gallery.category) %>
+<%= link_to 'Add Photo', new_category_gallery_photo_path(@gallery.category, @gallery)  %>
+<%= link_to 'Back to ' + @gallery.category.name, category_path(@gallery.category) %>
 
+<div id='gallery'>
   <p>
     <strong> Name:</strong>
     <%= @gallery.name %>
@@ -9,8 +9,8 @@
 
   <% @gallery.photos.each do |photo| %>
       <div id="caption">
-        <% if photo.public %>
-            *
+        <% unless photo.public %>
+            .
         <% end %>
         <%= photo.caption %>
         <%= link_to 'Edit', edit_category_gallery_photo_path(@category, @gallery, photo) %>

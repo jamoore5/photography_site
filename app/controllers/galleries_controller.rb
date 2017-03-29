@@ -17,7 +17,8 @@ class GalleriesController < ApplicationController
   def create
     @category = Category.find(params[:category_id])
     @gallery = @category.galleries.new(gallery_params)
-    @gallery.order_idx = Gallery.max_order_idx(@category)+1
+    max_order_idx = Gallery.max_order_idx(@category)
+    @gallery.order_idx = max_order_idx ? max_order_idx+1 : 0
 
     if @gallery.save
       redirect_to category_path(@category)

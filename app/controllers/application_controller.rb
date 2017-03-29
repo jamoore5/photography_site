@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :get_categories
 
   def get_categories
-    @categories = Category.all
+    @menu_categories = Category.publicly_visible.all
   end
 end

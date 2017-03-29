@@ -4,6 +4,8 @@ class Gallery < ApplicationRecord
   default_scope { order(order_idx: :asc) }
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
+  scope :publicly_visible, -> { where(public: true) }
+
   def self.max_order_idx(category_id)
     Gallery.where(category_id: category_id).maximum('order_idx')
   end

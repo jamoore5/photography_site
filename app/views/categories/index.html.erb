@@ -1,3 +1,5 @@
+<%= link_to 'New Category', new_category_path %>
+
 <h1> Categories </h1>
 
 <table>
@@ -8,7 +10,12 @@
   </tr>
   <% @categories.each do |category| %>
     <tr>
-      <td><%= category.name %></td>
+      <td>
+        <% unless category.public %>
+            .
+        <% end %>
+        <%= category.name %>
+      </td>
       <td><% if category.order_idx != Category.min_order_idx %><%= link_to 'Move Up', category_move_up_path(category), :method => :patch %><% end %></td>
       <td><% if category.order_idx != Category.max_order_idx %><%= link_to 'Move Down', category_move_down_path(category), :method => :patch %><% end %></td>
       <td><%= link_to 'Show', category_path(category) %></td>
@@ -19,5 +26,3 @@
     </tr>
   <% end %>
 </table>
-
-<%= link_to 'New Category', new_category_path %>

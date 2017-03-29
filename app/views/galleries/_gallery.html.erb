@@ -1,5 +1,9 @@
 <tr>
-  <td><%= gallery.name %></td>
+  <td>
+    <% unless gallery.public %>
+        .
+    <% end %>
+    <%= gallery.name %></td>
   <td>
     <% if gallery.order_idx != Gallery.min_order_idx(gallery.category) %>
       <%= link_to 'Move Up', gallery_move_up_path(gallery), :method => :patch %>
